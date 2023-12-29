@@ -1,0 +1,11 @@
+import pandas as pd
+
+# The following 3 lines of code (or lines 3 to 5) have been sourced from https://www.geeksforgeeks.org/how-to-create-pie-chart-from-pandas-dataframe/. 
+dataframe = pd.DataFrame({'Roles': ['Python', 'AI', 'Web',  
+                                   'Systems', 'Database'], 
+                          'employees_in_each_role': [4, 4, 3, 3, 1]}) 
+
+# The following 2 lines of code (or lines 3 to 4) have been sourced from https://www.geeksforgeeks.org/how-to-create-pie-chart-from-pandas-dataframe/ 
+# This pie chart shows how many employees in each role as a percentage.
+dataframe.groupby(['Roles']).sum().plot( 
+    kind='pie', y='employees_in_each_role', autopct='%1.0f%%')
