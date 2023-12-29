@@ -1,0 +1,46 @@
+import tkinter as tk
+import matplotlib.pyplot as plt
+from matplotlib.backends.backend_tkagg import FigureCanvasTkAgg
+
+df1
+
+df2
+
+df3
+
+# This GUI will display the 3 dataframes into a bar chart, line graph or scatterplot
+root = tk.Tk()
+
+# Plotting df1 as a bar chart
+fig1 = plt.Figure(figsize=(6, 5), dpi=100)
+ax1 = fig1.add_subplot(111)
+
+bar1 = FigureCanvasTkAgg(fig1, root)
+bar1.get_tk_widget().pack(side=tk.LEFT, fill=tk.BOTH)
+
+df1.plot(kind="bar", legend=True, ax=ax1)
+ax1.set_title("Number Of Each Employee In Python")
+
+# Plotting df2 as a line graph
+fig2 = plt.Figure(figsize=(6, 5), dpi=100)
+ax2 = fig2.add_subplot(111)
+
+line2 = FigureCanvasTkAgg(fig2, root)
+line2.get_tk_widget().pack(side=tk.LEFT, fill=tk.BOTH)
+
+df2.plot(kind="line", legend=True, ax=ax2, color="r", marker="o")
+ax2.set_title("Showing Each Employee Name And How Many Roles They Have")
+
+# Plotting df3 as a scatterplot
+fig3 = plt.Figure(figsize=(6, 5), dpi=100)
+ax3 = fig3.add_subplot(111)
+
+scatter3 = FigureCanvasTkAgg(fig3, root)
+scatter3.get_tk_widget().pack(side=tk.LEFT, fill=tk.BOTH)
+
+ax3.scatter(df3["Employee_Names"], df3["Number_Of_Each_Employee_In_Web"], color="g")
+ax3.legend(["Employee Names"])
+ax3.set_xlabel("Number Of Each Employee In Web")
+ax3.set_title("Number Of Employees In Web")
+
+root.mainloop()
