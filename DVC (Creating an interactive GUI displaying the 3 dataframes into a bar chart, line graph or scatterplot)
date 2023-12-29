@@ -1,0 +1,104 @@
+from tkinter import ttk
+
+# This interactive GUI displaying the 3 dataframes into a bar chart, line graph or scatterplot.
+# from previos cell
+root = tk.Tk()
+
+canvas = tk.Canvas(root, width=800, height=300)
+# canvas.pack()
+
+label = tk.Label(root, text="GUI")
+label.config(font=("Arial", 20))
+canvas.create_window(400, 50, window=label)
+
+# Dropdown menu
+combobox = ttk.Combobox(root)
+combobox["values"] = ("df1", "df2", "df3")
+canvas.create_window(400, 220, window=combobox)
+combobox.grid(row=0, column=1)
+combobox.current(1)
+
+def createCharts(): # create_charts()
+    global chart
+    grid_position = [4, 3]
+    
+    # going to be oour switch to select the data
+    df = combobox.get()
+    
+    if df == "df1":
+        # Plotting df1 as a bar chart
+        fig1 = plt.Figure(figsize=(6, 5), dpi=100)
+        ax1 = fig1.add_subplot(111)
+
+        chart = FigureCanvasTkAgg(fig1, root)
+        chart.get_tk_widget().grid(row=grid_position[0], column=grid_position[1])
+
+        df1.plot(kind="bar", legend=True, ax=ax1)
+        ax1.set_title("Number Of Each Employee In Python") 
+        
+    elif df == "df2":
+        # Plotting df2 as a line graph
+        fig2 = plt.Figure(figsize=(6, 5), dpi=100)
+        ax2 = fig2.add_subplot(111)
+
+        chart = FigureCanvasTkAgg(fig2, root)
+        chart.get_tk_widget().grid(row=grid_position[0], column=grid_position[1])
+
+        df2.plot(kind="line", legend=True, ax=ax2, color="r", marker="o")
+        ax2.set_title("Showing Each Employee Name And Their Two Roles")
+        
+    else:
+        # Plotting df3 as a scatterplot
+        fig3 = plt.Figure(figsize=(6, 5), dpi=100)
+        ax3 = fig3.add_subplot(111)
+
+        chart = FigureCanvasTkAgg(fig3, root)
+        chart.get_tk_widget().grid(row=grid_position[0], column=grid_position[1])
+
+        ax3.scatter(df3["Employees_Names"], df3["Number_Of_Each_Employee_In_Web"], color="g")
+        ax3.legend(["Employees Name"])
+        ax3.set_xlabel("Number Of Each Employee In Web")
+        ax3.set_title("Number Of Employees In Web")
+
+
+def clearCharts():
+    try:
+        chart.get_tk_widget().grid_forget()
+
+def updateCharts():
+    try:
+        clearCharts()
+    except:
+        pass
+    createCharts()
+
+    
+# Buttons - taken from previous cell
+createChartsButton = tk.Button(
+    root,
+    text="Create Charts",
+    command=updateCharts,# made this above
+    bg="palegreen",
+    font=("Poppins", 11, 'bold')
+).grid(row=1, column=0)
+canvas.create_window(400, 180, window=createChartsButton)
+
+clearChartsButton = tk.Button(
+    root,
+    text="Clear Charts",
+    command=clearCharts,
+    bg="blue",
+    font=("Poppins", 11, 'bold')
+).grid(row=1, column=1)
+canvas.create_window(400, 220, window=clearChartsButton)
+
+exitButton = tk.Button(
+    root,
+    text="Exit",
+    command=root.destroy,
+    bg="red",
+    font=("Poppins", 11, 'bold')
+).grid(row=1, column=2)
+canvas.create_window(400, 250, window=exitButton)
+
+root.mainloop()
