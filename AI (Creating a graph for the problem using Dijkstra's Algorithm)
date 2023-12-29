@@ -1,0 +1,11 @@
+# Creating a graph for the problem
+example_graph = {
+    'Peter': {'Python': 1, 'AI': 1},
+    'Juan': {'Web': 1, 'AI': 1},
+    'Jim': {'AI': 1, 'Systems': 1},
+    'Jane': {'Python': 1, 'Database': 1},
+    'Mary': {'Web': 1, 'Systems': 1},
+    'Bruce': {'Systems': 1, 'Python': 1},
+    'Anita': {'Web': 1, 'AI': 1},
+    'Ciara': {'Python': 1},
+}
