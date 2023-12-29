@@ -8,7 +8,7 @@ df2
 
 df3
 
-# This GUI will display the 3 dataframes into a bar chart, line graph or scatterplot
+# This GUI will display the 3 dataframes into a bar chart, line graph or scatterplot.
 root = tk.Tk()
 
 # Plotting df1 as a bar chart
