@@ -1,0 +1,13 @@
+import seaborn as sns
+
+df = pd.DataFrame({'EmployeeNames': ["Peter", "Juan", "Jim", "Jane", "Mary", "Bruce", "Anita", "Ciara"],
+                   'Number_Of_Each_Employee_In_Systems': [0, 0, 1, 0, 1, 1, 0, 0],
+                   'Number_Of_Each_Employee_In_Database': [0, 0, 0, 1, 0, 0, 0, 0]})
+
+# This seaborn scatterplot shows which employees has Systems.
+sns.scatterplot(
+    data=df,
+    x="EmployeeNames",
+    y="Number_Of_Each_Employee_In_Systems",
+    hue="Number_Of_Each_Employee_In_Systems"
+);
