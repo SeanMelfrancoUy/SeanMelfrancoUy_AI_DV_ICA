@@ -1,0 +1,85 @@
+# Using the Fire Officer Constraint CSP Framework to solve the problem. 
+import csp
+from csp import Constraint, CSP
+
+from typing import Dict, List, Optional
+
+class RolesConstraint(Constraint[str, str]):
+    def __init__(self, variables: List[str]) -> None:
+        super().__init__(variables)
+        self.variables: List[str] = variables
+
+    def satisfied(self, assignment: Dict[str, str]) -> bool:
+        if len(assignment) == len(self.variables):
+            c: str = assignment["Ciara"]
+        return True 
+
+    def __init__(self, domain1: str, domain2: str) -> None:
+        super().__init__([domain1, domain2])
+        self.domain1: str = domain1
+        self.domain2: str = domain2
+
+    def satisfied(self, assignment: Dict[str, str]) -> bool:
+        
+        if self.domain1 not in assignment or self.domain2 not in assignment:
+            return True
+        # Check if the employee assigned to domain1 is not the same as the
+        # employee assigned to domain2
+        return assignment[self.domain1] != assignment[self.domain2]
+
+if __name__ == "__main__": 
+    variables: List[str] = ["Peter", "Juan", "Jim", "Jane", "Mary", "Bruce", "Anita", "Ciara", "1st Python Programmer", "2nd Python Programmer", "1st AI Engineer", "2nd AI Engineer", "3rd AI Engineer", "1 Web Designer", "1 Database Admin", "1 Systems Engineer"]    
+    domains: Dict[str, List[str]] = {}   
+    for variable in variables: 
+        domains[variable] = ["1st Python Programmer", "2nd Python Programmer", "1st AI Engineer", "2nd AI Engineer", "3rd AI Engineer", "1 Web Designer", "1 Database Admin", "1 Systems Engineer"]
+    
+    csp: CSP[str, str] = CSP(variables, domains)
+    # Assign the following hard constraint
+    domains["Ciara"] = ["1st Python Programmer"]
+    
+    # Add constraints to each employee's abilities that they don't have
+    csp.add_constraint(RolesConstraint("Peter", "1 Web Designer"))
+    csp.add_constraint(RolesConstraint("Peter", "1 Database Admin"))
+    csp.add_constraint(RolesConstraint("Peter", "1 Systems Engineer"))
+    csp.add_constraint(RolesConstraint("Juan", "1st Python Programmer"))
+    csp.add_constraint(RolesConstraint("Juan", "2nd Python Programmer"))
+    csp.add_constraint(RolesConstraint("Juan", "1 Database Admin"))
+    csp.add_constraint(RolesConstraint("Juan", "1 Systems Engineer"))  
+    csp.add_constraint(RolesConstraint("Jim", "1st Python Programmer"))
+    csp.add_constraint(RolesConstraint("Jim", "2nd Python Programmer"))
+    csp.add_constraint(RolesConstraint("Jim", "1 Web Designer"))
+    csp.add_constraint(RolesConstraint("Jim", "1 Database Admin")) 
+    csp.add_constraint(RolesConstraint("Jane", "1st AI Engineer"))
+    csp.add_constraint(RolesConstraint("Jane", "2nd AI Engineer"))
+    csp.add_constraint(RolesConstraint("Jane", "3rd AI Engineer"))
+    csp.add_constraint(RolesConstraint("Jane", "1 Web Designer"))
+    csp.add_constraint(RolesConstraint("Jane", "1 Systems Engineer")) 
+    csp.add_constraint(RolesConstraint("Mary", "1st Python Programmer"))
+    csp.add_constraint(RolesConstraint("Mary", "2nd Python Programmer"))
+    csp.add_constraint(RolesConstraint("Mary", "1st AI Engineer"))
+    csp.add_constraint(RolesConstraint("Mary", "2nd AI Engineer"))
+    csp.add_constraint(RolesConstraint("Mary", "3rd AI Engineer"))
+    csp.add_constraint(RolesConstraint("Mary", "1 Database Admin"))
+    csp.add_constraint(RolesConstraint("Bruce", "1st AI Engineer"))
+    csp.add_constraint(RolesConstraint("Bruce", "2nd AI Engineer"))
+    csp.add_constraint(RolesConstraint("Bruce", "3rd AI Engineer"))
+    csp.add_constraint(RolesConstraint("Bruce", "1 Web Designer"))
+    csp.add_constraint(RolesConstraint("Bruce", "1 Database Admin"))
+    csp.add_constraint(RolesConstraint("Anita", "1st AI Engineer"))
+    csp.add_constraint(RolesConstraint("Anita", "2nd AI Engineer"))
+    csp.add_constraint(RolesConstraint("Anita", "3rd AI Engineer"))
+    csp.add_constraint(RolesConstraint("Anita", "1 Database Admin"))
+    csp.add_constraint(RolesConstraint("Anita", "1 Systems Engineer"))
+    csp.add_constraint(RolesConstraint("Ciara", "1st AI Engineer"))
+    csp.add_constraint(RolesConstraint("Ciara", "2nd AI Engineer"))
+    csp.add_constraint(RolesConstraint("Ciara", "3rd AI Engineer"))
+    csp.add_constraint(RolesConstraint("Ciara", "1 Web Designer"))
+    csp.add_constraint(RolesConstraint("Ciara", "1 Database Admin"))
+    csp.add_constraint(RolesConstraint("Ciara", "1 Systems Engineer"))
+ 
+    # If there is a solution, print it. Otherwise, let user know that there is no solution
+    solution: Optional[Dict[str, str]] = csp.backtracking_search() 
+    if solution is None: 
+         print("No solution found!") 
+    else: 
+         print(solution)
