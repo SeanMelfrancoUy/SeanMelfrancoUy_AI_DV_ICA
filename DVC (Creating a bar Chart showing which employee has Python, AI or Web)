@@ -1,0 +1,13 @@
+# The following 9 lines of code (or lines 2 to 12) have been sourced from https://www.analyticsvidhya.com/blog/2021/08/understanding-bar-plots-in-python-beginners-guide-to-data-visualization/.
+# This bar chart shows which employee has Python, AI or Web.
+plotdata = pd.DataFrame({
+    "Python":[1, 0, 0, 1, 0, 1, 0, 1],
+    "AI":[1, 1, 1, 0, 0, 0, 1, 0],
+    "Web":[0, 1, 0, 0, 1, 0, 1, 0]},
+    index=["Peter", "Juan", "Jim", "Jane", "Mary", "Bruce", "Anita", "Ciara"])
+plotdata.plot(kind='bar', stacked=True,figsize=(15, 8))
+plt.title("Employees who have Python, AI or Web")
+
+plt.xlabel("Employees")
+
+plt.ylabel("Roles")
