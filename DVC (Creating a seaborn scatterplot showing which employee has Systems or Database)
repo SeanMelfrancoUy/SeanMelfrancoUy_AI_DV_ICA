@@ -1,0 +1,11 @@
+# Seaborn scatterplot showing which employee has Systems And Database.
+plt.figure(figsize=(20,10))
+
+sns.scatterplot(
+    data=df,
+    x="EmployeeNames",
+    y="Number_Of_Each_Employee_In_Systems",
+    hue="Number_Of_Each_Employee_In_Systems",
+    s=100, # Dot size
+    size="Number_Of_Each_Employee_In_Database"
+);
