@@ -1,3 +1,4 @@
+# Using the Fire Officer Constraint CSP Framework to solve the problem. 
 class RolesConstraint(Constraint[str, str]):
     def __init__(self, variables: List[str]) -> None:
         super().__init__(variables)
