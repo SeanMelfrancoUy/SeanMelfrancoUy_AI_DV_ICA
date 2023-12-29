@@ -1,0 +1,9 @@
+# The following 7 lines of code (or lines 3 to 9) have been sourced from https://pandas.pydata.org/docs/reference/api/pandas.DataFrame.plot.bar.html.
+# This bar chart shows which employee has Web or Systems.
+web = [0, 1, 0, 0, 1, 0, 1, 0]
+systems = [0, 0, 1, 0, 1, 1, 0, 0]
+index = ['Peter', 'Juan', 'Jim',
+         'Jane', 'Mary', 'Bruce', 'Anita', 'Ciara']
+df = pd.DataFrame({'web': web,
+                   'systems': systems}, index=index)
+ax = df.plot.bar(rot=0)
