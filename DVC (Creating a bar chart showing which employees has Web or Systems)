@@ -1,4 +1,4 @@
-# The following 7 lines of code (or lines 3 to 9) have been sourced from https://pandas.pydata.org/docs/reference/api/pandas.DataFrame.plot.bar.html.
+# The following 7 lines of code (or lines 4 to 10) have been sourced from https://pandas.pydata.org/docs/reference/api/pandas.DataFrame.plot.bar.html.
 # This bar chart shows which employee is doing either Web or Systems.
 # Set the index for employee names and dataframe for employees in Web and Systems.
 web = [0, 1, 0, 0, 1, 0, 1, 0]
