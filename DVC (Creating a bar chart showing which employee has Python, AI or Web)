@@ -1,4 +1,4 @@
-# The following 9 lines of code (or lines 2 to 12) have been sourced from https://www.analyticsvidhya.com/blog/2021/08/understanding-bar-plots-in-python-beginners-guide-to-data-visualization/.
+# The following 9 lines of code (or lines 4 to 14) have been sourced from https://www.analyticsvidhya.com/blog/2021/08/understanding-bar-plots-in-python-beginners-guide-to-data-visualization/.
 # This bar chart shows which employee has Python, AI or Web.
 # Dataframe for employees in Python, AI and Web and the index contains the employee name.
 plotdata = pd.DataFrame({
