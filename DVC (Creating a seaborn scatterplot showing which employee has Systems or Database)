@@ -1,4 +1,4 @@
-# Seaborn scatterplot showing which employee has Systems And Database.
+# Seaborn scatterplot showing which employee has Systems or Database.
 plt.figure(figsize=(20,10))
 
 sns.scatterplot(
