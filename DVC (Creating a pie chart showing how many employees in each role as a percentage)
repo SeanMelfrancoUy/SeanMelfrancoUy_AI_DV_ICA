@@ -1,6 +1,7 @@
 import pandas as pd
 
 # The following 3 lines of code (or lines 3 to 5) have been sourced from https://www.geeksforgeeks.org/how-to-create-pie-chart-from-pandas-dataframe/. 
+# Dataframe for the 5 roles and how many employees in each role.
 dataframe = pd.DataFrame({'Roles': ['Python', 'AI', 'Web',  
                                    'Systems', 'Database'], 
                           'employees_in_each_role': [4, 4, 3, 3, 1]}) 
