@@ -1,0 +1,37 @@
+import matplotlib.animation as animation
+
+df = pd.dataframe({'EmployeeNames': ["Peter", "Juan", "Jim", "Jane", "Mary", "Bruce", "Anita", "Ciara"]})
+
+pip install dash
+
+# The following 22 lines of code (or lines 2 to 30) have been sourced from https://plotly.com/python/pie-charts/.
+# This interactive pie chart using dash will select any employees name in the dropdown menu and it will show the roles they have as a percentage.
+from dash import Dash, dcc, html, Input, Output
+import plotly.express as px
+
+app = Dash(__name__)
+
+
+app.layout = html.Div([
+    html.H4('Employees And Their Roles'),
+    dcc.Graph(id="graph"),
+    html.P("Names:"),
+    dcc.Dropdown(id='names',
+        options=['Peter', 'Juan', 'Jim', 'Jane', 'Mary', 'Bruce', 'Anita', 'Ciara'],
+        value='day', clearable=False
+    ),
+,
+])
+
+
+@app.callback(
+    Output("graph", "figure"), 
+    Input("names", "value"))
+def generate_chart(names, values):
+    df = px.dataframe({'EmployeeNames': ["Peter", "Juan", "Jim", "Jane", "Mary", "Bruce", "Anita", "Ciara"],
+                       'Roles': }) # replace with your own data source
+    fig = px.pie(df, values=values, names=names, hole=.3)
+    return fig
+
+
+app.run_server(debug=True)
